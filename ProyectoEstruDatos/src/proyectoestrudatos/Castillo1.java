@@ -8,6 +8,6 @@ package proyectoestrudatos;
  *
  * @author tdani
  */
-public class Castillo {
+public class Castillo1 {
     
 }
