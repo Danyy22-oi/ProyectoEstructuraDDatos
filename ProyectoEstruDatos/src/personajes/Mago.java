@@ -1,5 +1,5 @@
 
-package proyectoestrudatos;
+package personajes;
 
 import java.util.Random;
 

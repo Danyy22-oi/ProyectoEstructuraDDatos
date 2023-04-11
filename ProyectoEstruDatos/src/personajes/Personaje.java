@@ -1,5 +1,5 @@
 
-package proyectoestrudatos;
+package personajes;
 
 import java.util.Random;
 
@@ -69,6 +69,17 @@ public class Personaje {
 
 		return puntosDefensa;
 	}
+        
+        public void recibirAtaque(int puntosAtaque){
+            int puntosDefensa = defender();
+            int danos = puntosAtaque - puntosDefensa;
+            if (danos < 0)//Evitamos valor negativos en el daño recibido
+                danos = 0;
+            System.out.println(nombre + "recibe" + danos + "puntos de daño.");
+            perderVida(danos);
+            if (vida == 0)
+                System.out.println(nombre + "ha sido derrotado");
+        }
 
 }
 

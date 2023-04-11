@@ -1,5 +1,5 @@
 
-package proyectoestrudatos;
+package main;
 
 
 public class Nivel {
@@ -8,17 +8,20 @@ public class Nivel {
     protected int ataque;
     protected int defensa;
     protected int vida;
-    public Nivel (){
-           nombre = "Desconocido";
-           ataque = 0;
-           defensa = 0;
-           vida = 0;
-    }
+    
+    
     public Nivel (String nombre, int ataque, int defensa, int vida){
        this.nombre = nombre;
         this.ataque = ataque;
         this.defensa = defensa;
         this.vida = vida;
+    }
+    
+    public Nivel (){
+           nombre = "Desconocido";
+           ataque = 0;
+           defensa = 0;
+           vida = 0;
     }
    
     public void setnombre (String nom){
