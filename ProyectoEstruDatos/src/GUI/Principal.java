@@ -1,26 +1,39 @@
 package GUI;
 
-import EstructuraDeDatos.*;
-import personajes.*;
-import Node.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import EstructuraDeDatos.ListaCircular;
+import Node.NodoCircular;
+import javax.sound.sampled.FloatControl;
+import personajes.Personaje;
 
 public class Principal extends JFrame {
 
     private NodoCircular nodoActual;
     private ListaCircular lista;
+    private Clip clip;
+    private FloatControl gainControl;
     Personaje caballero;
     Personaje arquero;
     Personaje mago;
 
-    public Principal() {
+    public Principal() {        
         //Se crea la lista y los personajes
         lista = new ListaCircular();
         caballero = new Personaje("Caballero", 10, 10, 100);
@@ -81,8 +94,10 @@ public class Principal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-
+        
+        
     }
+    
 
     
     @SuppressWarnings("unchecked")
