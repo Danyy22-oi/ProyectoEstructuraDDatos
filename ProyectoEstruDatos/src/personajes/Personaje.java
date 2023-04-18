@@ -6,10 +6,17 @@ import java.util.Random;
 
 public class Personaje {
     
-	protected String nombre;
+	public String nombre;
 	protected int ataque;
 	protected int defensa;
 	protected int vida;
+        
+        public Personaje(String nombre, int ataque, int defensa, int vida){
+		this.nombre = nombre;
+		this.ataque = ataque;
+		this.defensa = defensa;
+		this.vida = vida;
+	}
 
 	public Personaje() {
 		nombre = "Desconocido";
@@ -17,12 +24,7 @@ public class Personaje {
 		defensa = 0;
 		vida = 0;
 	}
-	public Personaje(String nombre, int ataque, int defensa, int vida){
-		this.nombre = nombre;
-		this.ataque = ataque;
-		this.defensa = defensa;
-		this.vida = vida;
-	}
+	
 
 	public String getNombre (){
 		return this.nombre;
