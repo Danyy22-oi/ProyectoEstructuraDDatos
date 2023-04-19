@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import EstructuraDeDatos.ListaCircular;
 import Node.NodoCircular;
+import java.awt.Graphics;
+import java.awt.Image;
 import javax.sound.sampled.FloatControl;
 import personajes.Personaje;
 
@@ -68,38 +70,32 @@ public class Principal extends JFrame {
             }
         });
 
-        // Crear el panel principal y agregar el botón
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout()); // Agregar un layout al panel
+          // Crear el panel principal y agregar la imagen de fondo
+        JPanel panelPrincipal = new JPanel(new BorderLayout()) {
+            // Sobrescribir el método paintComponent() para dibujar la imagen de fondo
+            Image imagenFondo = new ImageIcon(getClass().getResource("/Multimedia/fondo2.jpg")).getImage();
 
-        // Crear un panel vacío para agregar espacio en la parte superior
-        JPanel espacioSuperior = new JPanel();
-        espacioSuperior.setPreferredSize(new Dimension(0,50)); // Establecer la altura del espacio
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        add(panelPrincipal);
 
-        panel.add(espacioSuperior, BorderLayout.SOUTH); // Agregar el espacio superior al panel
-
-        panel.add(botonImagen, BorderLayout.SOUTH); // Agregar el botón al centro del panel
-
-        // Crear un panel vacío para agregar espacio en la parte inferior
-        JPanel espacioInferior = new JPanel();
-        espacioInferior.setPreferredSize(new Dimension(0, 10)); // Establecer la altura del espacio
-
-        panel.add(espacioInferior, BorderLayout.NORTH); // Agregar el espacio inferior al panel
-
-        // Agregar el panel a la ventana
-        add(panel);
+        // Agregar el botón al panel inferior
+        JPanel panelBoton = new JPanel();
+        panelBoton.add(botonImagen);
+        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         // Configurar la ventana
         setSize(1400, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        
-        
     }
-    
-
-    
+}       
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
