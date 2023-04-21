@@ -3,15 +3,24 @@ import personajes.*;
 
 
 public class NodoCircular {
-    public Personaje personaje;
-    public NodoCircular siguiente;
+    private Personaje personaje;
+    private NodoCircular siguiente;
+    private NodoCircular anterior;
 
     public NodoCircular(Personaje personaje) {
         this.personaje = personaje;
-        this.siguiente = null;
-    }
+    } 
 
-    // getters y setters para personaje y siguiente
+    public NodoCircular(NodoCircular siguiente, NodoCircular anterior) {      
+        this.siguiente = siguiente;
+        this.anterior = anterior;
+    }
+    
+    public NodoCircular() {
+        this.siguiente = null;
+        this.anterior = null;
+    }
+    
     public Personaje getPersonaje() {
         return personaje;
     }
@@ -27,5 +36,15 @@ public class NodoCircular {
     public void setSiguiente(NodoCircular siguiente) {
         this.siguiente = siguiente;
     }
+
+    public NodoCircular getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(NodoCircular anterior) {
+        this.anterior = anterior;
+    }
+
+    
 }
  

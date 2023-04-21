@@ -1,11 +1,10 @@
-
 package EstructuraDeDatos;
 
 import Node.*;
 import personajes.*;
 
 public class ListaCircular {
- NodoCircular inicio;
+    NodoCircular inicio;
 
     public ListaCircular() {
         inicio = null;
@@ -17,7 +16,7 @@ public class ListaCircular {
 
         if (inicio == null) { // si la lista está vacía
             inicio = nuevo;
-            nuevo.setSiguiente(inicio); // el siguiente del nuevo nodo es el inicio
+            inicio.setSiguiente(inicio); // el siguiente del nuevo nodo es el inicio
         } else { // si la lista ya tiene elementos
             NodoCircular actual = inicio;
 
@@ -31,15 +30,15 @@ public class ListaCircular {
     }
 
     // método para imprimir los nombres y tipos de los personajes en la lista
-   public void imprimir() {
+    public void imprimir() {
         if (inicio == null) {
             System.out.println("La lista está vacía.");
             return;
         }
         NodoCircular actual = inicio;
         do {
-            System.out.println(actual.personaje.nombre);
-            actual = actual.siguiente;
+            System.out.println(actual.getPersonaje().getNombre());
+            actual = actual.getSiguiente();
         } while (actual != inicio);
     }
 }
