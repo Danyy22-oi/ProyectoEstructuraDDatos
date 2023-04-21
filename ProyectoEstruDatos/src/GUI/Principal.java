@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
     private int unidadesDesplegadas = 0;
     ListaCircular listaC = new ListaCircular();
+    ListaCircularCPU listaCCPU = new ListaCircularCPU();
     
 
     /**
@@ -18,6 +19,25 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
    
+    }
+    
+    private void agregarUnidadesAleatoriasCPU(){
+        int cantidadPersonajes = 3;
+        for (int i = 0; i < cantidadPersonajes; i++) {
+            int tipoPersonaje = (int) (Math.random() * 3) + 1; // Genera un número aleatorio entre 1 y 3
+            switch (tipoPersonaje) {
+                case 1: // Arquero
+                    listaCCPU.agregar(new Personaje("Arquero", 1.0, "Roca"));
+                    break;
+                case 2: // Caballero
+                    listaCCPU.agregar(new Personaje("Caballero", 2.0, "Papel"));
+                    break;
+                case 3: // Mago
+                    listaCCPU.agregar(new Personaje("Mago", 1.5, "Tijera"));
+                    break;
+        }
+    }
+        
     }
 
     /**
@@ -46,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
         ContinuarB.setDefaultCapable(false);
         ContinuarB.setFocusPainted(false);
         ContinuarB.setFocusable(false);
+        ContinuarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarBActionPerformed(evt);
+            }
+        });
         getContentPane().add(ContinuarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 90, 20));
 
         ArqueroB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Arquero.png"))); // NOI18N
@@ -165,6 +190,18 @@ public class Principal extends javax.swing.JFrame {
         }
         listaC.imprimir();
     }//GEN-LAST:event_MagoBActionPerformed
+
+    private void ContinuarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarBActionPerformed
+        if (unidadesDesplegadas < 4){
+            JOptionPane.showMessageDialog(null, "No se puede continuar sin 4 unidades elegidas.");            
+        }else{         
+            Juego PJP  = new Juego();
+            agregarUnidadesAleatoriasCPU();
+            listaCCPU.imprimir();
+            PJP.setVisible(true);
+            this.dispose();      
+        }        
+    }//GEN-LAST:event_ContinuarBActionPerformed
     
     /**
      * @param args the command line arguments
