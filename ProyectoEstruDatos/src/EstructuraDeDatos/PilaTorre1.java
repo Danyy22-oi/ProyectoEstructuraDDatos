@@ -1,46 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package EstructuraDeDatos;
+ package EstructuraDeDatos;
 
-import Node.NodoTorre1;
+import Node.*;
+import personajes.VidaTorre;
 
-/**
- *
- * @author tdani
- */
+
 public class PilaTorre1 {
+    private NodoTorre cabeza; //apunta a la parte superior de la pila
 
-    private NodoTorre1 cabeza;
-
+    public PilaTorre1(NodoTorre cabeza) {
+        this.cabeza = cabeza;
+    }
+    
     public PilaTorre1() {
-        cabeza = null;
+        this.cabeza = null; //se inicia la pila vacia
     }
-
-    public boolean estaVacia() {
-        return cabeza == null;
+    
+    //Inserta
+    
+    public void push(double vida){
+        VidaTorre torre = new VidaTorre();
+        NodoTorre nuevoN = new NodoTorre(vida);
+        nuevoN.setSiguiente(cabeza);
+        cabeza = nuevoN;
     }
-
-    public void agregar(int valor) {
-        NodoTorre1 nuevoNodo = new NodoTorre1(valor);
-        if (estaVacia()) {
-            cabeza = nuevoNodo;
-        } else {
-            nuevoNodo.establecerSiguiente(cabeza);
-            cabeza = nuevoNodo;
+    public void imprimir() {
+        NodoTorre temp = cabeza;
+        while (temp != null) {
+            System.out.println(temp.getVida());
+            temp = temp.getSiguiente();
         }
     }
-
-    public int eliminar() {
-        if (estaVacia()) {
-            return -1; // Por ejemplo, se podría retornar -1 para indicar que la pila está vacía.
-        } else {
-            int valorEliminado = cabeza.obtenerValor();
-            cabeza = cabeza.obtenerSiguiente();
-            return valorEliminado;
-        }
-    }
-}
+} 
 
 

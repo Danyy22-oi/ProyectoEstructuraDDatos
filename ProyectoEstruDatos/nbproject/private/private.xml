@@ -2,6 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/main/main.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/GUI/Menu.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/PilaTorre1.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Node/NodoTorre.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/ListaCircular.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/personajes/Personaje.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/ColaJugadorDerecha.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/ColaCPUIzquierda.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Node/NodoCPU.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/personajes/VidaTorre.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Node/NodoJugador.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/GUI/Juego.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/ColaCPUDerecha.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Node/NodoCircularCPU.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Node/NodoCircular.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/PilaTorre2.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/EstructuraDeDatos/ColaJugadorIzquierda.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/GUI/Principal.java</file>
+            <file>file:/E:/Wakanda/Universidad/Estructura%20de%20datos/ProyectoEstructuraDDatos/ProyectoEstruDatos/src/Multimedia/Castillo.PNG</file>
+        </group>
     </open-files>
 </project-private>

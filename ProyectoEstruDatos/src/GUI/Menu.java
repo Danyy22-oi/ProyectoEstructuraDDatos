@@ -55,7 +55,6 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 480, 280));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/91WLVxaIU8L.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 510));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

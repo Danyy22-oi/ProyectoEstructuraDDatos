@@ -4,13 +4,22 @@ package GUI;
 import Node.*;
 import personajes.*;
 import EstructuraDeDatos.*;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 
 
 public class Principal extends javax.swing.JFrame {
+    String nombre;
     private int unidadesDesplegadas = 0;
+    private int ronda = 0;
     ListaCircular listaC = new ListaCircular();
     ListaCircularCPU listaCCPU = new ListaCircularCPU();
+    ColaJugadorDerecha colaDer = new ColaJugadorDerecha();
+    ColaJugadorIzquierda colaIzq = new ColaJugadorIzquierda();
+    ColaCPUDerecha colaCPUD = new ColaCPUDerecha();
+    ColaCPUIzquierda colaCPUI = new ColaCPUIzquierda();
+    
+    
     
 
     /**
@@ -20,9 +29,27 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
    
     }
+    public Image getCabezaImage() {
+        if (nombre.equals("piedra")) {
+            return colaIzq.getCabeza().getImagePiedra();
+        } else if (tipo.equals("papel")) {
+            return colaJugador.getCabeza().getImagePapel();
+        } else if (tipo.equals("tijera")) {
+            return colaJugador.getCabeza().getImageTijera();
+        } else {
+            return null; // Manejar el caso en que el tipo sea inválido
+        }
+    }
+    
+    
+    public void reiniciar(){
+        //reiniciar las listas
+    }
     
     private void agregarUnidadesAleatoriasCPU(){
         int cantidadPersonajes = 3;
+        int numColaIzq = 0;
+        int numColaDer = 0;
         for (int i = 0; i < cantidadPersonajes; i++) {
             int tipoPersonaje = (int) (Math.random() * 3) + 1; // Genera un número aleatorio entre 1 y 3
             switch (tipoPersonaje) {
@@ -36,8 +63,28 @@ public class Principal extends javax.swing.JFrame {
                     listaCCPU.agregar(new Personaje("Mago", 1.5, "Tijera"));
                     break;
         }
-    }
-        
+            int Seleccion = (int) (Math.random() * 2);  //Genera un número aleatorio entre 0 y 1
+            if (Seleccion == 0 && numColaIzq < 2){
+                Personaje eliminado = listaCCPU.eliminarPrimero();
+                if (eliminado == null){
+                    JOptionPane.showMessageDialog(null, "La lista esta vacia");
+                } else {
+                    colaCPUI.encolar(eliminado);
+                    numColaIzq++;
+                }
+            } else if(Seleccion == 1 && numColaDer < 2) {
+                Personaje eliminado = listaCCPU.eliminarPrimero();
+                if (eliminado == null){
+                    JOptionPane.showMessageDialog(null, "La lista esta vacia");
+                } else {
+                    colaCPUD.encolar(eliminado);
+                    numColaDer++;
+                }
+            }
+            colaCPUD.imprimir();
+            colaCPUI.imprimir();
+            listaCCPU.imprimir(); 
+        }       
     }
 
     /**
@@ -49,6 +96,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Derecha = new javax.swing.JButton();
         ContinuarB = new javax.swing.JButton();
         ArqueroB = new javax.swing.JButton();
         MagoB = new javax.swing.JButton();
@@ -59,6 +107,20 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Derecha.setText("CAMINOS");
+        Derecha.setToolTipText("");
+        Derecha.setBorderPainted(false);
+        Derecha.setDoubleBuffered(true);
+        Derecha.setFocusCycleRoot(true);
+        Derecha.setFocusPainted(false);
+        Derecha.setFocusable(false);
+        Derecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DerechaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 170, 20));
 
         ContinuarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Captura de pantalla 2023-04-21 024047.png"))); // NOI18N
         ContinuarB.setBorderPainted(false);
@@ -71,7 +133,7 @@ public class Principal extends javax.swing.JFrame {
                 ContinuarBActionPerformed(evt);
             }
         });
-        getContentPane().add(ContinuarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 90, 20));
+        getContentPane().add(ContinuarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 90, 20));
 
         ArqueroB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Arquero.png"))); // NOI18N
         ArqueroB.setText("jButton2");
@@ -160,7 +222,7 @@ public class Principal extends javax.swing.JFrame {
                 listaC.agregar(new Personaje("Arquero",1.0,"Roca"));
             }
         }
-        listaC.imprimir();        
+        //listaC.imprimir();        
     }//GEN-LAST:event_ArqueroBActionPerformed
 
     private void CaballeroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaballeroBActionPerformed
@@ -174,7 +236,7 @@ public class Principal extends javax.swing.JFrame {
                 listaC.agregar(new Personaje("Caballero",2.0,"Papel"));
             }    
         }
-        listaC.imprimir();
+        //listaC.imprimir();
     }//GEN-LAST:event_CaballeroBActionPerformed
 
     private void MagoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagoBActionPerformed
@@ -188,11 +250,11 @@ public class Principal extends javax.swing.JFrame {
                 listaC.agregar(new Personaje("Mago",1.5,"Tijera"));
             }   
         }
-        listaC.imprimir();
+        //listaC.imprimir();
     }//GEN-LAST:event_MagoBActionPerformed
 
     private void ContinuarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarBActionPerformed
-        if (unidadesDesplegadas < 4){
+        if (unidadesDesplegadas < 4 || !listaC.estaVacia()){
             JOptionPane.showMessageDialog(null, "No se puede continuar sin 4 unidades elegidas.");            
         }else{         
             Juego PJP  = new Juego();
@@ -202,6 +264,30 @@ public class Principal extends javax.swing.JFrame {
             this.dispose();      
         }        
     }//GEN-LAST:event_ContinuarBActionPerformed
+
+    private void DerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DerechaActionPerformed
+    Personaje eliminado = listaC.eliminarPrimero();
+    if (eliminado == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía");
+    } else {
+        String[] opciones = {"Camino de la Izquierda", "Camino de la Derecha"};
+        int seleccion = JOptionPane.showOptionDialog(null, "Seleccione la cola a la que desea agregar el personaje", "Seleccionar Cola", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opciones, opciones[0]);
+        switch (seleccion) {
+            case 0: // Jugador Izquierda
+                colaIzq.encolar(eliminado);
+                break;
+            case 1: // Jugador Derecha
+                colaDer.encolar(eliminado);
+                break;
+            default:
+                break;
+        }
+    }
+    //colaDer.imprimir();
+    //colaIzq.imprimir();
+    //listaC.imprimir();
+        
+    }//GEN-LAST:event_DerechaActionPerformed
     
     /**
      * @param args the command line arguments
@@ -242,6 +328,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton ArqueroB;
     private javax.swing.JButton CaballeroB;
     private javax.swing.JButton ContinuarB;
+    private javax.swing.JButton Derecha;
     private javax.swing.JButton MagoB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

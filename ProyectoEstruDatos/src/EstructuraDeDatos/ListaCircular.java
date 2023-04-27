@@ -28,6 +28,30 @@ public class ListaCircular {
             nuevo.setSiguiente(inicio); // el siguiente del nuevo nodo es el inicio
         }
     }
+    // método para eliminar un personaje de la lista por su nombre
+    public Personaje eliminarPrimero() {
+    if (inicio == null) {
+        return null; // si la lista está vacía
+    }
+    NodoCircular nodoEliminado = inicio;
+    Personaje eliminado = nodoEliminado.getPersonaje();
+    if (inicio.getSiguiente() == inicio) { // si la lista tiene un solo elemento
+        inicio = null;
+    } else {
+        NodoCircular ultimo = inicio;
+        while (ultimo.getSiguiente() != inicio) {
+            ultimo = ultimo.getSiguiente();
+        }
+        inicio = inicio.getSiguiente();
+        ultimo.setSiguiente(inicio);
+        nodoEliminado.setSiguiente(null);
+    }
+    return eliminado;
+}
+    
+    
+    
+    
 
     // método para imprimir los nombres y tipos de los personajes en la lista
     public void imprimir() {
@@ -41,4 +65,11 @@ public class ListaCircular {
             actual = actual.getSiguiente();
         } while (actual != inicio);
     }
+   
+    public boolean estaVacia() {
+        return inicio== null;
+    }
+    
+    
+
 }

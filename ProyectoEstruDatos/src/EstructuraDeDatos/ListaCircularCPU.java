@@ -42,5 +42,24 @@ public class ListaCircularCPU {
             actual = actual.getSiguiente();
         } while (actual != inicio);
     }
+    public Personaje eliminarPrimero() {
+    if (inicio == null) {
+        return null; // si la lista está vacía
+    }
+    NodoCircularCPU nodoEliminado = inicio;
+    Personaje eliminado = nodoEliminado.getPersonaje();
+    if (inicio.getSiguiente() == inicio) { // si la lista tiene un solo elemento
+        inicio = null;
+    } else {
+        NodoCircularCPU ultimo = inicio;
+        while (ultimo.getSiguiente() != inicio) {
+            ultimo = ultimo.getSiguiente();
+        }
+        inicio = inicio.getSiguiente();
+        ultimo.setSiguiente(inicio);
+        nodoEliminado.setSiguiente(null);
+    }
+    return eliminado;
+}
 }
 

@@ -38,6 +38,11 @@ public class Personaje {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Personaje{" + "Nombre=" + Nombre + ", AtaqueCastillo=" + AtaqueCastillo + ", tipo=" + tipo + '}';
+    }
     
     
 
