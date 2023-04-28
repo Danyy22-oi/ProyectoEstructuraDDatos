@@ -5,8 +5,11 @@ import Node.*;
 import personajes.*;
 import EstructuraDeDatos.*;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 
 public class Principal extends javax.swing.JFrame {
@@ -34,8 +37,49 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    //Creamos los datos del cronometro
+    private Timer tiempo;
+    private int centesimas_segundos = 0;
+    private int segundos = 0;
+    private int minutos = 0;
+    private int horas = 0;
+    
+    
+    private ActionListener acciones = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            centesimas_segundos ++;
+            if(centesimas_segundos == 100){
+                segundos++;
+                centesimas_segundos = 0;
+            }
+            if(segundos == 60 ){
+                minutos ++;
+                segundos = 0;
+            }
+            if(minutos == 60){
+                horas++;
+                minutos = 0;
+            }
+            if(horas == 24){
+                horas = 0;
+            }
+            
+            ActualizaTiempo();
+        }
+    };
+    
+    private void ActualizaTiempo(){
+        String texto = (horas<=9?"0":"")+horas+":"+(minutos<=9?"0":" ")+minutos+":"+(segundos<=9?"0":"")+segundos+":"+(centesimas_segundos <=9?"0":"")+centesimas_segundos;
+        etiquetaCronometro.setText(texto);
+    }
+    
+    
+    
     public Principal() {
         initComponents();
+        tiempo = new Timer(10, acciones);
         pila1.push(1.0);
         pila1.push(1.5);
         pila1.push(2.0);
@@ -72,6 +116,8 @@ public class Principal extends javax.swing.JFrame {
         pila2.push(9.5);
         pila2.push(10.0);
         pila2.imprimir();
+        etiquetaCronometro.setVisible(false);
+        etiquetaCronometro.setEnabled(false);
         Camino1.setVisible(false);
         Camino1.setEnabled(false);
         Camino2.setVisible(false);
@@ -90,7 +136,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     private void agregarUnidadesAleatoriasCPU(){
-        int cantidadPersonajes = 3;
+        int cantidadPersonajes = 3 + ronda;
         int numColaIzq = 0;
         int numColaDer = 0;
         for (int i = 0; i < cantidadPersonajes; i++) {
@@ -139,6 +185,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        etiquetaCronometro = new javax.swing.JLabel();
         Comprobar = new javax.swing.JButton();
         Camino2 = new javax.swing.JButton();
         Camino1 = new javax.swing.JButton();
@@ -157,6 +204,11 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        etiquetaCronometro.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        etiquetaCronometro.setForeground(new java.awt.Color(0, 0, 0));
+        etiquetaCronometro.setText("00:00:00:00");
+        getContentPane().add(etiquetaCronometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 80, 30));
 
         Comprobar.setText("COMPROBAR");
         Comprobar.addActionListener(new java.awt.event.ActionListener() {
@@ -313,8 +365,8 @@ public class Principal extends javax.swing.JFrame {
     private void ArqueroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArqueroBActionPerformed
         String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
-        if (unidadesDesplegadas + cantidadN > 4) {
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de 4 Unidades");
+        if (unidadesDesplegadas + cantidadN > 4 + ronda) {
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + " Unidades");
         }else{
             unidadesDesplegadas += cantidadN;
             for (int i = 0; i< cantidadN; i++){
@@ -327,8 +379,8 @@ public class Principal extends javax.swing.JFrame {
     private void CaballeroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaballeroBActionPerformed
         String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
-        if (unidadesDesplegadas + cantidadN >4){
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de 4 Unidades");
+        if (unidadesDesplegadas + cantidadN >4 + ronda){
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + "Unidades");
         }else{
             unidadesDesplegadas += cantidadN;
             for (int i = 0; i< cantidadN; i++){
@@ -341,8 +393,8 @@ public class Principal extends javax.swing.JFrame {
     private void MagoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagoBActionPerformed
        String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
-        if (unidadesDesplegadas + cantidadN >4){
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de 4 Unidades");
+        if (unidadesDesplegadas + cantidadN >4 + ronda){
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + " Unidades");
         }else{
             unidadesDesplegadas += cantidadN; 
             for (int i = 0; i< cantidadN; i++){
@@ -352,10 +404,18 @@ public class Principal extends javax.swing.JFrame {
         //listaC.imprimir();
     }//GEN-LAST:event_MagoBActionPerformed
 
+    
+    
+    
+    
     private void ContinuarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarBActionPerformed
-        if (unidadesDesplegadas < 4 || !listaC.estaVacia()){
-            JOptionPane.showMessageDialog(null, "No se puede continuar sin 4 unidades elegidas.");            
-        }else{         
+        int unidadesRequeridas = 4 + ronda;
+        if (unidadesDesplegadas < unidadesRequeridas || !listaC.estaVacia()){
+            JOptionPane.showMessageDialog(null, "No se puede continuar sin" + unidadesRequeridas + "unidades elegidas.");            
+        }else{ 
+            tiempo.start();
+            etiquetaCronometro.setVisible(true);
+            etiquetaCronometro.setEnabled(true);
             agregarUnidadesAleatoriasCPU();   
             Derecha.setEnabled(false);
             Derecha.setVisible(false);
@@ -448,16 +508,16 @@ public class Principal extends javax.swing.JFrame {
         // Empate, no se hace nada
     }
     // Imprimir el ganador junto con su respectiva cola
-    System.out.println("Ganador: " + ganador);
-    System.out.println("Cola del ganador:");
+    JOptionPane.showMessageDialog(null, "Ganador: " + ganador);
+    JOptionPane.showMessageDialog(null,"Cola del ganador:");
     if (ganador.equals("jugador")) {
         System.out.println(ganadorJ.toString());
     } else if (ganador.equals("cpu")) {
         System.out.println(ganadorC.toString());
     } else if (ganador.equals("empate")) {
-        System.out.println("No hubo ganador.");
+        JOptionPane.showMessageDialog(null,"No hubo ganador.");
     } else {
-       System.err.println("Error: el valor de 'ganador' no es válido");
+       JOptionPane.showMessageDialog(null, "Error: el valor de 'ganador' no es válido");
     }
     
 }
@@ -504,28 +564,26 @@ public class Principal extends javax.swing.JFrame {
         // Empate, no se hace nada
     }
     // Imprimir el ganador junto con su respectiva cola
-    System.out.println("Ganador: " + ganador);
-    System.out.println("Cola del ganador:");
+    JOptionPane.showMessageDialog(null, "Ganador: " + ganador);
+    JOptionPane.showMessageDialog(null, "Cola del ganador:");
     if (ganador.equals("jugador")) {
-        System.out.println(ganadorJ.toString());
+        JOptionPane.showMessageDialog(null, ganadorJ.toString());
     } else if (ganador.equals("cpu")) {
-        System.out.println(ganadorC.toString());
+        JOptionPane.showMessageDialog(null, ganadorC.toString());
     } else if (ganador.equals("empate")) {
-        System.out.println("No hubo ganador.");
+        JOptionPane.showMessageDialog(null, "No hubo ganador.");
     } else {
-       System.err.println("Error: el valor de 'ganador' no es válido");
+      JOptionPane.showMessageDialog(null,"Error: el valor de 'ganador' no es válido");
     }
     
 }
     
     
     private void Camino1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Camino1ActionPerformed
-        Camino1.setEnabled(false);
-        
+        Camino1.setEnabled(false);     
         jugarRPSI();
         AtaqueTorresE();
-        AtaqueTorresU();
-        vaciarColas();
+        AtaqueTorresU();     
         verificar();
         
         
@@ -534,11 +592,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void Camino2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Camino2ActionPerformed
         Camino2.setEnabled(false);
-        
         jugarRPSD();
         AtaqueTorresE();
         AtaqueTorresU();
-        vaciarColas();
         verificar();
         
         
@@ -547,6 +603,18 @@ public class Principal extends javax.swing.JFrame {
 
     private void ComprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprobarActionPerformed
         comprobarPilas();
+        vaciarColas();
+        if(tiempo.isRunning()){
+        tiempo.stop();    
+        }
+        centesimas_segundos = 0;
+        segundos = 0;
+        minutos = 0;
+        horas = 0;
+        ActualizaTiempo();
+        etiquetaCronometro.setVisible(false);
+        
+        
     }//GEN-LAST:event_ComprobarActionPerformed
     
     public void verificar(){
@@ -613,6 +681,7 @@ public class Principal extends javax.swing.JFrame {
             // ambas pilas tienen nodos, se habilitan los botones
             ronda++;
             unidadesDesplegadas = 0;
+            vaciarColas();
             ArqueroB.setEnabled(true);
             CaballeroB.setEnabled(true);
             MagoB.setEnabled(true);
@@ -638,13 +707,31 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public void vaciarColas() {
-    while(!ganadorJ.estaVacia()) {
-        ganadorJ.desencolar();
+        while (!ganadorJ.estaVacia()) {
+            ganadorJ.desencolar();
+        }
+        while (!colaDer.estaVacia()) {
+            colaDer.desencolar();
+        }
+        while (!colaIzq.estaVacia()) {
+            colaIzq.desencolar();
+        }
+        while (!ganadorC.estaVacia()) {
+            ganadorC.desencolar();
+        }
+        while (!colaCPUD.estaVacia()) {
+            colaCPUD.desencolar();
+        }
+        while (!colaCPUI.estaVacia()) {
+            colaCPUI.desencolar();
+        }
     }
-    while(!ganadorC.estaVacia()) {
-        ganadorC.desencolar();
-    }
-}
+
+
+
+
+
+
             
             
     /**
@@ -693,6 +780,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton ContinuarB;
     private javax.swing.JButton Derecha;
     private javax.swing.JButton MagoB;
+    private javax.swing.JLabel etiquetaCronometro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
