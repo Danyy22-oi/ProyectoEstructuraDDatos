@@ -97,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
         pila1.push(9.0);
         pila1.push(9.5);
         pila1.push(10.0);     
-        pila1.imprimir();
+        pila1.imprimirCima();
         pila2.push(1.0);
         pila2.push(1.5);
         pila2.push(2.0);
@@ -115,7 +115,7 @@ public class Principal extends javax.swing.JFrame {
         pila2.push(9.0);
         pila2.push(9.5);
         pila2.push(10.0);
-        pila2.imprimir();
+        //pila2.imprimir();
         etiquetaCronometro.setVisible(false);
         etiquetaCronometro.setEnabled(false);
         Camino1.setVisible(false);
@@ -366,7 +366,7 @@ public class Principal extends javax.swing.JFrame {
         String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
         if (unidadesDesplegadas + cantidadN > 4 + ronda) {
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + " Unidades");
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+" "+ (4 + ronda)+" " +"Unidades");
         }else{
             unidadesDesplegadas += cantidadN;
             for (int i = 0; i< cantidadN; i++){
@@ -380,7 +380,7 @@ public class Principal extends javax.swing.JFrame {
         String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
         if (unidadesDesplegadas + cantidadN >4 + ronda){
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + "Unidades");
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+" "+ (4 + ronda)+" " +"Unidades");
         }else{
             unidadesDesplegadas += cantidadN;
             for (int i = 0; i< cantidadN; i++){
@@ -394,7 +394,7 @@ public class Principal extends javax.swing.JFrame {
        String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de unidades que desea desplegar de este campeon");
         int cantidadN = Integer.parseInt(cantidad);
         if (unidadesDesplegadas + cantidadN >4 + ronda){
-            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+ (4 + ronda) + " Unidades");
+            JOptionPane.showMessageDialog(null, "No se pueden desplegar mas de "+" "+ (4 + ronda)+" " +"Unidades");
         }else{
             unidadesDesplegadas += cantidadN; 
             for (int i = 0; i< cantidadN; i++){
@@ -643,6 +643,7 @@ public class Principal extends javax.swing.JFrame {
         }
         // Imprimir la nueva cantidad de nodos en la pilaEnemigo
         System.out.println("Nueva cantidad de nodos en la pilaEnemigo: " + pila1.tam());
+        pila1.imprimirCima();
     }
 }
     private void AtaqueTorresU(){
@@ -663,6 +664,7 @@ public class Principal extends javax.swing.JFrame {
 
         // Imprimir la nueva cantidad de nodos en la pilaAliado
         System.out.println("Nueva cantidad de nodos en la pilaAliado: " + pila2.tam());
+        pila2.imprimirCima();
     }
 }
     

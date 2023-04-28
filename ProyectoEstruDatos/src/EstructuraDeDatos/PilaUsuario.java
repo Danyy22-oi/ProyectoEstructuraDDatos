@@ -35,13 +35,14 @@ public class PilaUsuario {
         cabeza = nuevoN;
     }
 
-    public void imprimir() {
-        NodoTorre temp = cabeza;
-        while (temp != null) {
-            System.out.println(temp.getVida());
-            temp = temp.getSiguiente();
+    public void imprimirCima() {
+        if (cabeza == null) {
+            System.out.println("La lista está vacía.");
+        } else {
+            System.out.println("La vida del esta torre es: " + cabeza.getVida());
         }
     }
+
 
     public NodoTorre pop() {
         if (estaVacia()) {
