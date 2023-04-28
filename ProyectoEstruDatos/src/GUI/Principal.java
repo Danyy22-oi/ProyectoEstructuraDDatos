@@ -5,6 +5,7 @@ import Node.*;
 import personajes.*;
 import EstructuraDeDatos.*;
 import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -18,32 +19,74 @@ public class Principal extends javax.swing.JFrame {
     ColaJugadorIzquierda colaIzq = new ColaJugadorIzquierda();
     ColaCPUDerecha colaCPUD = new ColaCPUDerecha();
     ColaCPUIzquierda colaCPUI = new ColaCPUIzquierda();
+    ganadorCPU ganadorC = new ganadorCPU();
+    ganadorJugador ganadorJ = new ganadorJugador();
+    Personaje cabeza = colaIzq.frente();
+    Personaje cabezaCPU = colaCPUI.frente();
+    PilaEnemigo pila1 = new PilaEnemigo();
+    PilaUsuario pila2 = new PilaUsuario();
     
-    
-    
-
+    public ColaJugadorIzquierda getColaIzq() {
+        
+        return colaIzq;
+    }
+   
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        pila1.push(1.0);
+        pila1.push(1.5);
+        pila1.push(2.0);
+        pila1.push(2.5);
+        pila1.push(3.0);
+        pila1.push(3.5);
+        pila1.push(4.0);
+        pila1.push(4.5);
+        pila1.push(5.0);
+        pila1.push(5.5);
+        pila1.push(6.5);
+        pila1.push(7.5);
+        pila1.push(8.0);
+        pila1.push(8.5);
+        pila1.push(9.0);
+        pila1.push(9.5);
+        pila1.push(10.0);     
+        pila1.imprimir();
+        pila2.push(1.0);
+        pila2.push(1.5);
+        pila2.push(2.0);
+        pila2.push(2.5);
+        pila2.push(3.0);
+        pila2.push(3.5);
+        pila2.push(4.0);
+        pila2.push(4.5);
+        pila2.push(5.0);
+        pila2.push(5.5);
+        pila2.push(6.5);
+        pila2.push(7.5);
+        pila2.push(8.0);
+        pila2.push(8.5);
+        pila2.push(9.0);
+        pila2.push(9.5);
+        pila2.push(10.0);
+        pila2.imprimir();
+        Camino1.setVisible(false);
+        Camino1.setEnabled(false);
+        Camino2.setVisible(false);
+        Camino2.setEnabled(false);
+        CastilloEnemigo.setVisible(false);
+        CastilloUsuario.setVisible(false);
+        jLabel3.setVisible(false);
+        jPanel2.setVisible(false);
+        Comprobar.setVisible(false);
+        
    
     }
-    public Image getCabezaImage() {
-        if (nombre.equals("piedra")) {
-            return colaIzq.getCabeza().getImagePiedra();
-        } else if (tipo.equals("papel")) {
-            return colaJugador.getCabeza().getImagePapel();
-        } else if (tipo.equals("tijera")) {
-            return colaJugador.getCabeza().getImageTijera();
-        } else {
-            return null; // Manejar el caso en que el tipo sea inválido
-        }
-    }
-    
-    
-    public void reiniciar(){
-        //reiniciar las listas
+  public void imagenes(){
+      
+        
     }
     
     private void agregarUnidadesAleatoriasCPU(){
@@ -81,9 +124,9 @@ public class Principal extends javax.swing.JFrame {
                     numColaDer++;
                 }
             }
-            colaCPUD.imprimir();
-            colaCPUI.imprimir();
-            listaCCPU.imprimir(); 
+            //colaCPUD.imprimir();
+            //colaCPUI.imprimir();
+            //listaCCPU.imprimir(); 
         }       
     }
 
@@ -96,6 +139,13 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Comprobar = new javax.swing.JButton();
+        Camino2 = new javax.swing.JButton();
+        Camino1 = new javax.swing.JButton();
+        CastilloEnemigo = new javax.swing.JLabel();
+        CastilloUsuario = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         Derecha = new javax.swing.JButton();
         ContinuarB = new javax.swing.JButton();
         ArqueroB = new javax.swing.JButton();
@@ -107,6 +157,55 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Comprobar.setText("COMPROBAR");
+        Comprobar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprobarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Comprobar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 160, 50));
+
+        Camino2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Camino_1.PNG"))); // NOI18N
+        Camino2.setText("jButton2");
+        Camino2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Camino2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Camino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 50, 150));
+
+        Camino1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Camino.PNG"))); // NOI18N
+        Camino1.setText("jButton1");
+        Camino1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Camino1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Camino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 50, 150));
+
+        CastilloEnemigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Castillo.PNG"))); // NOI18N
+        getContentPane().add(CastilloEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 130));
+
+        CastilloUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/Castillo.PNG"))); // NOI18N
+        getContentPane().add(CastilloUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, 160));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Multimedia/FondoJuego.PNG"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, Short.MAX_VALUE)
+                .addGap(350, 350, 350))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 370, 500));
 
         Derecha.setText("CAMINOS");
         Derecha.setToolTipText("");
@@ -257,11 +356,28 @@ public class Principal extends javax.swing.JFrame {
         if (unidadesDesplegadas < 4 || !listaC.estaVacia()){
             JOptionPane.showMessageDialog(null, "No se puede continuar sin 4 unidades elegidas.");            
         }else{         
-            Juego PJP  = new Juego();
-            agregarUnidadesAleatoriasCPU();
-            listaCCPU.imprimir();
-            PJP.setVisible(true);
-            this.dispose();      
+            agregarUnidadesAleatoriasCPU();   
+            Derecha.setEnabled(false);
+            Derecha.setVisible(false);
+            jLabel2.setVisible(false);
+            ArqueroB.setEnabled(false);
+            ArqueroB.setVisible(false);
+            MagoB.setEnabled(false);
+            MagoB.setVisible(false);
+            CaballeroB.setEnabled(false);
+            CaballeroB.setVisible(false);
+            ContinuarB.setEnabled(false);
+            ContinuarB.setVisible(false);
+            Camino1.setVisible(true);
+            Camino1.setEnabled(true);
+            Camino2.setVisible(true);
+            Camino2.setEnabled(true);
+            CastilloEnemigo.setVisible(true);
+            CastilloUsuario.setVisible(true);
+            jPanel2.setVisible(true);
+            jLabel3.setVisible(true);
+            
+                  
         }        
     }//GEN-LAST:event_ContinuarBActionPerformed
 
@@ -283,12 +399,254 @@ public class Principal extends javax.swing.JFrame {
                 break;
         }
     }
-    //colaDer.imprimir();
-    //colaIzq.imprimir();
-    //listaC.imprimir();
+    colaDer.imprimir();
+    colaIzq.imprimir();
+    listaC.imprimir();
         
     }//GEN-LAST:event_DerechaActionPerformed
     
+    private void jugarRPSI() {
+    // Obtener la cabeza de ambas colas
+    Object cabezaJugador = colaIzq.frente();
+    Object cabezaCPU = colaCPUI.frente();
+
+    // Validar que las cabezas sean del tipo esperado
+    if (!(cabezaJugador instanceof Personaje) || !(cabezaCPU instanceof Personaje)) {
+        // Si no son del tipo esperado, lanzar una excepción o manejar el error apropiadamente
+        throw new IllegalArgumentException("Las cabezas de las colas deben ser del tipo Personaje");
+    }
+
+    // Obtener los tipos de los personajes
+    String tipoJugador = ((Personaje) cabezaJugador).getTipo();
+    String tipoCPU = ((Personaje) cabezaCPU).getTipo();
+
+    // Definir las reglas del juego de piedra, papel o tijera
+    String ganador;
+    if (tipoJugador.equals("Roca") && tipoCPU.equals("Tijera") ||
+        tipoJugador.equals("Papel") && tipoCPU.equals("Roca") ||
+        tipoJugador.equals("Tijera") && tipoCPU.equals("Papel")) {
+        // El jugador gana
+        ganador = "jugador";
+    } else if (tipoCPU.equals("Roca") && tipoJugador.equals("Tijera") ||
+               tipoCPU.equals("Papel") && tipoJugador.equals("Roca") ||
+               tipoCPU.equals("Tijera") && tipoJugador.equals("Papel")) {
+        // La CPU gana
+        ganador = "cpu";
+    } else {
+        // Empate
+        ganador = "empate";
+    }
+
+    // Eliminar el personaje correspondiente a la cabeza de la cola perdedora
+    if (ganador.equals("jugador")) {
+        colaCPUI.desencolar();
+        ganadorJ.encolar((Personaje) cabezaJugador);
+    } else if (ganador.equals("cpu")) {
+        colaIzq.desencolar();
+        ganadorC.encolar((Personaje) cabezaCPU);
+    } else {
+        // Empate, no se hace nada
+    }
+    // Imprimir el ganador junto con su respectiva cola
+    System.out.println("Ganador: " + ganador);
+    System.out.println("Cola del ganador:");
+    if (ganador.equals("jugador")) {
+        System.out.println(ganadorJ.toString());
+    } else if (ganador.equals("cpu")) {
+        System.out.println(ganadorC.toString());
+    } else if (ganador.equals("empate")) {
+        System.out.println("No hubo ganador.");
+    } else {
+       System.err.println("Error: el valor de 'ganador' no es válido");
+    }
+    
+}
+    private void jugarRPSD() {
+    // Obtener la cabeza de ambas colas
+    Object cabezaJugador = colaDer.frente();
+    Object cabezaCPU = colaCPUD.frente();
+
+    // Validar que las cabezas sean del tipo esperado
+    if (!(cabezaJugador instanceof Personaje) || !(cabezaCPU instanceof Personaje)) {
+        // Si no son del tipo esperado, lanzar una excepción o manejar el error apropiadamente
+        throw new IllegalArgumentException("Las cabezas de las colas deben ser del tipo Personaje");
+    }
+
+    // Obtener los tipos de los personajes
+    String tipoJugador = ((Personaje) cabezaJugador).getTipo();
+    String tipoCPU = ((Personaje) cabezaCPU).getTipo();
+
+    // Definir las reglas del juego de piedra, papel o tijera
+    String ganador;
+    if (tipoJugador.equals("Roca") && tipoCPU.equals("Tijera") ||
+        tipoJugador.equals("Papel") && tipoCPU.equals("Roca") ||
+        tipoJugador.equals("Tijera") && tipoCPU.equals("Papel")) {
+        // El jugador gana
+        ganador = "jugador";
+    } else if (tipoCPU.equals("Roca") && tipoJugador.equals("Tijera") ||
+               tipoCPU.equals("Papel") && tipoJugador.equals("Roca") ||
+               tipoCPU.equals("Tijera") && tipoJugador.equals("Papel")) {
+        // La CPU gana
+        ganador = "cpu";
+    } else {
+        // Empate
+        ganador = "empate";
+    }
+
+    // Eliminar el personaje correspondiente a la cabeza de la cola perdedora
+    if (ganador.equals("jugador")) {
+        colaCPUI.desencolar();
+        ganadorJ.encolar((Personaje) cabezaJugador);
+    } else if (ganador.equals("cpu")) {
+        colaIzq.desencolar();
+        ganadorC.encolar((Personaje) cabezaCPU);
+    } else {
+        // Empate, no se hace nada
+    }
+    // Imprimir el ganador junto con su respectiva cola
+    System.out.println("Ganador: " + ganador);
+    System.out.println("Cola del ganador:");
+    if (ganador.equals("jugador")) {
+        System.out.println(ganadorJ.toString());
+    } else if (ganador.equals("cpu")) {
+        System.out.println(ganadorC.toString());
+    } else if (ganador.equals("empate")) {
+        System.out.println("No hubo ganador.");
+    } else {
+       System.err.println("Error: el valor de 'ganador' no es válido");
+    }
+    
+}
+    
+    
+    private void Camino1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Camino1ActionPerformed
+        Camino1.setEnabled(false);
+        
+        jugarRPSI();
+        AtaqueTorresE();
+        AtaqueTorresU();
+        vaciarColas();
+        verificar();
+        
+        
+        
+    }//GEN-LAST:event_Camino1ActionPerformed
+
+    private void Camino2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Camino2ActionPerformed
+        Camino2.setEnabled(false);
+        
+        jugarRPSD();
+        AtaqueTorresE();
+        AtaqueTorresU();
+        vaciarColas();
+        verificar();
+        
+        
+       
+    }//GEN-LAST:event_Camino2ActionPerformed
+
+    private void ComprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprobarActionPerformed
+        comprobarPilas();
+    }//GEN-LAST:event_ComprobarActionPerformed
+    
+    public void verificar(){
+        if(!Camino1.isEnabled() && !Camino2.isEnabled()){
+            Camino1.setVisible(false);
+            Camino2.setVisible(false);
+            Comprobar.setVisible(true);
+            Comprobar.setEnabled(true);
+        }
+            
+    }
+    
+    private void AtaqueTorresE(){
+    // Revisar el tipo de personaje en la cabeza de la cola ganadorJugador
+    if (!ganadorJ.estaVacia()) {
+        if (ganadorJ.frente().getNombre().equals("Arquero")) {
+            pila1.pop(); // sacar 1 nodo
+        } else if (ganadorJ.frente().getNombre().equals("Caballero")) {
+            pila1.pop(); // sacar 1 nodo
+            pila1.pop(); // sacar 1 nodo
+            pila1.pop(); // sacar 1 nodo
+            pila1.pop(); // sacar 1 nodo
+        } else if (ganadorJ.frente().getNombre().equals("Mago")) {
+            pila1.pop(); // sacar 1 nodo
+            pila1.pop(); // sacar 1 nodo
+        }
+        // Imprimir la nueva cantidad de nodos en la pilaEnemigo
+        System.out.println("Nueva cantidad de nodos en la pilaEnemigo: " + pila1.tam());
+    }
+}
+    private void AtaqueTorresU(){
+    // Revisar el tipo de personaje en la cabeza de la cola ganadorCompu
+    if (!ganadorC.estaVacia()) {
+        if (ganadorC.frente().getNombre().equals("Arquero")) {
+            pila2.pop(); // sacar 1 nodo
+        } else if (ganadorC.frente().getNombre().equals("Caballero")) {
+            pila2.pop(); // sacar 1 nodo
+            pila2.pop(); // sacar 1 nodo
+            pila2.pop(); // sacar 1 nodo
+            pila2.pop(); // sacar 1 nodo
+        } else if (ganadorC.frente().getNombre().equals("Mago")) {
+            pila2.pop(); // sacar 1 nodo
+            pila2.pop(); // sacar 1 nodo
+        }
+        
+
+        // Imprimir la nueva cantidad de nodos en la pilaAliado
+        System.out.println("Nueva cantidad de nodos en la pilaAliado: " + pila2.tam());
+    }
+}
+    
+    public void comprobarPilas(){
+        if (pila1.estaVacia() && pila2.estaVacia() && ganadorC.estaVacia() && ganadorJ.estaVacia()) {
+            // ambas pilas están vacías, no se hace nada
+        } else if (pila1.estaVacia() && !pila2.estaVacia()) {
+            // la pila1 está vacía y la pila2 tiene nodos, se instancia el frame win.java
+            win frame = new win();
+            frame.setVisible(true);
+        } else if (!pila1.estaVacia() && pila2.estaVacia()) {
+            // la pila1 tiene nodos y la pila2 está vacía, se instancia el frame wasted.java
+            wasted frame = new wasted();
+            frame.setVisible(true);
+        } else {
+            // ambas pilas tienen nodos, se habilitan los botones
+            ronda++;
+            unidadesDesplegadas = 0;
+            ArqueroB.setEnabled(true);
+            CaballeroB.setEnabled(true);
+            MagoB.setEnabled(true);
+            ArqueroB.setVisible(true);
+            CaballeroB.setVisible(true);
+            MagoB.setVisible(true);
+            Derecha.setEnabled(true);
+            Derecha.setVisible(true);
+            ContinuarB.setEnabled(true);
+            ContinuarB.setVisible(true);
+            jLabel3.setVisible(false);
+            jPanel2.setVisible(false);
+            Camino1.setEnabled(false);
+            Camino2.setEnabled(false);
+            Camino1.setVisible(false);
+            Camino2.setVisible(false);
+            Comprobar.setEnabled(false);
+            Comprobar.setVisible(false);
+            CastilloEnemigo.setVisible(false);
+            CastilloUsuario.setVisible(false);
+            
+        }    
+    }
+    
+    public void vaciarColas() {
+    while(!ganadorJ.estaVacia()) {
+        ganadorJ.desencolar();
+    }
+    while(!ganadorC.estaVacia()) {
+        ganadorC.desencolar();
+    }
+}
+            
+            
     /**
      * @param args the command line arguments
      */
@@ -327,11 +685,18 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ArqueroB;
     private javax.swing.JButton CaballeroB;
+    private javax.swing.JButton Camino1;
+    private javax.swing.JButton Camino2;
+    private javax.swing.JLabel CastilloEnemigo;
+    private javax.swing.JLabel CastilloUsuario;
+    private javax.swing.JButton Comprobar;
     private javax.swing.JButton ContinuarB;
     private javax.swing.JButton Derecha;
     private javax.swing.JButton MagoB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
